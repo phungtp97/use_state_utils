@@ -148,8 +148,14 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
   }
 
   /// Disposes all managed resources upon the disposal of the state.
+  @mustCallSuper
   @override
   void dispose() {
+    _disposeAll();
+    super.dispose();
+  }
+
+  void _disposeAll() async{
     for (var scene in _useStateScenes.entries) {
       scene.value.dispose().then((value) {
         if (UseStateConfig.debugPrintOnFailedDispose) {
@@ -162,7 +168,6 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
       });
     }
     _useStateScenes.clear();
-    super.dispose();
   }
 }
 

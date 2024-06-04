@@ -60,10 +60,10 @@ class DemoPage extends StatefulWidget {
   const DemoPage({super.key});
 
   @override
-  State createState() => _DemoPageState();
+  State createState() => DemoPageState();
 }
 
-class _DemoPageState extends State<DemoPage>
+class DemoPageState extends State<DemoPage>
     with UseStateMixin<DemoPage>, TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Color?> _colorTween;
@@ -125,6 +125,7 @@ class _DemoPageState extends State<DemoPage>
           builder: (context, _) {
             return Material(
               color: _colorTween.value,
+              key: const Key('background'),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
