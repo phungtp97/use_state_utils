@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../use_state_utils.dart';
@@ -98,6 +99,23 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
       key: key,
       create: () => Timer.periodic(duration, callback),
       disposeHandler: (timer) async => timer.cancel()
+    );
+  }
+
+  /// Retrieves or creates a TextEditingController
+  ///
+  /// [key]: A unique string key to identify the periodic Timer.
+  /// [TEXT]: A string to set as initialize value for TextEditingController.
+  ///
+  /// Returns a [TextEditingController] and auto dispose.
+  TextEditingController useTextEditingController({
+    required String key,
+    String? text,
+  }) {
+    return _getOrCreate(
+      key: key,
+      create: () => TextEditingController(text: text),
+      disposeHandler: (controller) async => controller.dispose()
     );
   }
 
