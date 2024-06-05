@@ -65,6 +65,7 @@ class DemoPage extends StatefulWidget {
 
 class DemoPageState extends State<DemoPage>
     with UseStateMixin<DemoPage>, TickerProviderStateMixin {
+
   late AnimationController _animationController;
   late Animation<Color?> _colorTween;
   late BehaviorSubject<int?> _streamController;
@@ -101,16 +102,17 @@ class DemoPageState extends State<DemoPage>
     if (data == null) return;
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Stream Alert'),
-        content: Text('Stream sent: $data'),
-        actions: [
-          TextButton(
-            child: const Text('OK'),
-            onPressed: () => Navigator.of(context).pop(),
+      builder: (context) =>
+          AlertDialog(
+            title: const Text('Stream Alert'),
+            content: Text('Stream sent: $data'),
+            actions: [
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -152,4 +154,11 @@ class DemoPageState extends State<DemoPage>
           }),
     );
   }
+
+
+
 }
+
+
+
+
