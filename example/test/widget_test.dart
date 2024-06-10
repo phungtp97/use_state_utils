@@ -18,19 +18,28 @@ void main() {
 
     final button = find.text('Toggle Animation');
     expect(find.byKey(const Key('background')), findsOneWidget);
-    expect((tester.firstWidget(find.byKey(const Key('background'))) as Material).color, Colors.cyan);
+    expect(
+        (tester.firstWidget(find.byKey(const Key('background'))) as Material)
+            .color,
+        Colors.cyan);
 
     // Tap the button
     await tester.tap(button);
     await tester.pump();
 
-    expect((tester.firstWidget(find.byKey(const Key('background'))) as Material).color, Colors.deepOrange);
+    expect(
+        (tester.firstWidget(find.byKey(const Key('background'))) as Material)
+            .color,
+        Colors.deepOrange);
 
     // Tap again to reverse
     await tester.tap(button);
     await tester.pump();
 
-    expect((tester.firstWidget(find.byKey(const Key('background'))) as Material).color, Colors.cyan);
+    expect(
+        (tester.firstWidget(find.byKey(const Key('background'))) as Material)
+            .color,
+        Colors.cyan);
 
     await tester.pump(const Duration(seconds: 2));
   });

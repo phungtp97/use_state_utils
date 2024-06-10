@@ -1,3 +1,7 @@
-## 0.0.1
+## 1.0.0+1
 
-* TODO: Describe initial release.
+* fix use_state_utils_web.dart not found error.
+
+## 1.0.0
+
+* initial release.

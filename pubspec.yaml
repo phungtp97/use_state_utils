@@ -1,6 +1,6 @@
 name: use_state_utils
 description: "The UseStateMixin is a mixin for Flutter StatefulWidget classes that simplifies the management and lifecycle of resources and auto dispose"
-version: 1.0.0
+version: 1.0.0+1
 homepage: https://github.com/phungtp97/use_state_utils
 
 environment:
@@ -10,12 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
-
+  flutter_lints:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

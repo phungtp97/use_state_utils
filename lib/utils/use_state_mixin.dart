@@ -22,10 +22,9 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
     Duration duration = const Duration(milliseconds: 300),
   }) {
     return _getOrCreate(
-      key: key,
-      create: () => AnimationController(vsync: vsync, duration: duration),
-      disposeHandler: (controller) async => controller.dispose()
-    );
+        key: key,
+        create: () => AnimationController(vsync: vsync, duration: duration),
+        disposeHandler: (controller) async => controller.dispose());
   }
 
   /// Retrieves an existing ValueNotifier or creates a new one.
@@ -39,10 +38,9 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
     required V initialValue,
   }) {
     return _getOrCreate(
-      key: key,
-      create: () => ValueNotifier<V>(initialValue),
-      disposeHandler: (notifier) async => notifier.dispose()
-    );
+        key: key,
+        create: () => ValueNotifier<V>(initialValue),
+        disposeHandler: (notifier) async => notifier.dispose());
   }
 
   /// Subscribes to a stream and manages the subscription lifecycle.
@@ -58,10 +56,9 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
     required void Function(S event) onData,
   }) {
     return _getOrCreate(
-      key: key,
-      create: () => stream.listen(onData),
-      disposeHandler: (subscription) async => subscription.cancel()
-    );
+        key: key,
+        create: () => stream.listen(onData),
+        disposeHandler: (subscription) async => subscription.cancel());
   }
 
   /// Retrieves or creates a one-time Timer.
@@ -77,10 +74,9 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
     required Duration duration,
   }) {
     return _getOrCreate(
-      key: key,
-      create: () => Timer(duration, callback),
-      disposeHandler: (timer) async => timer.cancel()
-    );
+        key: key,
+        create: () => Timer(duration, callback),
+        disposeHandler: (timer) async => timer.cancel());
   }
 
   /// Retrieves or creates a periodic Timer.
@@ -96,10 +92,9 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
     required Duration duration,
   }) {
     return _getOrCreate(
-      key: key,
-      create: () => Timer.periodic(duration, callback),
-      disposeHandler: (timer) async => timer.cancel()
-    );
+        key: key,
+        create: () => Timer.periodic(duration, callback),
+        disposeHandler: (timer) async => timer.cancel());
   }
 
   /// Retrieves or creates a TextEditingController
@@ -113,10 +108,9 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
     String? text,
   }) {
     return _getOrCreate(
-      key: key,
-      create: () => TextEditingController(text: text),
-      disposeHandler: (controller) async => controller.dispose()
-    );
+        key: key,
+        create: () => TextEditingController(text: text),
+        disposeHandler: (controller) async => controller.dispose());
   }
 
   /// Retrieves or creates a custom managed resource.
@@ -173,7 +167,7 @@ mixin UseStateMixin<T extends StatefulWidget> on State<T> {
     super.dispose();
   }
 
-  void _disposeAll() async{
+  void _disposeAll() async {
     for (var scene in _useStateScenes.entries) {
       scene.value.dispose().then((value) {
         if (UseStateConfig.debugPrintOnFailedDispose) {
